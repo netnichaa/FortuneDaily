@@ -1,6 +1,8 @@
 import { VideoView, useVideoPlayer } from "expo-video";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import AdsBanner from "../ui/AdsBanner";
+import Cards from "./Cards";
 
 const HomeScreen = () => {
 	const player = useVideoPlayer(
@@ -20,9 +22,8 @@ const HomeScreen = () => {
 				nativeControls={false}
 			/>
 			{/* Content on top of the video background */}
-			<View style={styles.content}>
-				<Text>Example text</Text>
-			</View>
+			<Cards />
+			<AdsBanner />
 		</View>
 	);
 };
@@ -42,12 +43,6 @@ const styles = StyleSheet.create({
 		aspectRatio: 540 / 1280, // actual video ratio
 		top: 0,
 		left: 0,
-	},
-	content: {
-		width: "100%",
-		height: "50%",
-		justifyContent: "center",
-		alignItems: "center",
 	},
 });
 
