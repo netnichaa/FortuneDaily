@@ -1,27 +1,28 @@
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import Card from "../ui/Card";
 
-const Cards = () => {
+const CardList = () => {
 	return (
 		<View style={styles.container}>
-			<Image
-				source={require("../../assets/images/daily.jpg")}
+			<Card
+				source={require("../../assets/images/prophecies/daily.jpg")}
 				style={styles.card}
 			/>
-			<Image
-				source={require("../../assets/images/love.jpg")}
+			<Card
+				source={require("../../assets/images/prophecies/love.jpg")}
 				style={styles.card}
 			/>
-			<Image
-				source={require("../../assets/images/work.jpg")}
+			<Card
+				source={require("../../assets/images/prophecies/work.jpg")}
 				style={styles.card}
 			/>
-			<Image
-				source={require("../../assets/images/obstacle.jpg")}
+			<Card
+				source={require("../../assets/images/prophecies/obstacle.jpg")}
 				style={styles.card}
 			/>
-			{/* <Image
-				source={require("../../assets/images/relationship.jpg")}
+			{/* <Card
+				source={require("../../assets/images/prophecies/relationship.jpg")}
 				style={styles.card}
 			/> */}
 		</View>
@@ -41,9 +42,8 @@ const styles = StyleSheet.create({
 	card: {
 		width: undefined,
 		height: "50%", // 50% of card container
-		aspectRatio: 9 / 16,
 		margin: 6,
 	},
 });
 
-export default Cards;
+export default CardList;

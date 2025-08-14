@@ -2,7 +2,7 @@ import { VideoView, useVideoPlayer } from "expo-video";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import AdsBanner from "../ui/AdsBanner";
-import Cards from "./Cards";
+import CardList from "./CardList";
 
 const HomeScreen = () => {
 	const player = useVideoPlayer(
@@ -22,7 +22,7 @@ const HomeScreen = () => {
 				nativeControls={false}
 			/>
 			{/* Content on top of the video background */}
-			<Cards />
+			<CardList />
 			<AdsBanner />
 		</View>
 	);
