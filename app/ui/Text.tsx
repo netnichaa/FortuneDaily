@@ -4,7 +4,7 @@ import {
 	TextProps as ReactTextProps,
 	StyleSheet,
 } from "react-native";
-import colors from "../constant/colors";
+import colors from "../constants/colors";
 
 type TextVariant = "title" | "header" | "body" | "footer";
 

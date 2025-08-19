@@ -1,6 +1,6 @@
 import React from "react";
 import { Pressable, PressableProps, StyleSheet, View } from "react-native";
-import colors from "../constant/colors";
+import colors from "../constants/colors";
 import Text from "./Text";
 
 interface ButtonProps extends PressableProps {
