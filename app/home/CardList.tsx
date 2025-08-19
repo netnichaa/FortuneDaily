@@ -5,26 +5,30 @@ import Card from "../ui/Card";
 const CardList = () => {
 	return (
 		<View style={styles.container}>
-			<Card
-				source={require("../../assets/images/prophecies/daily.jpg")}
-				style={styles.card}
-			/>
-			<Card
-				source={require("../../assets/images/prophecies/love.jpg")}
-				style={styles.card}
-			/>
-			<Card
-				source={require("../../assets/images/prophecies/work.jpg")}
-				style={styles.card}
-			/>
-			<Card
-				source={require("../../assets/images/prophecies/obstacle.jpg")}
-				style={styles.card}
-			/>
-			{/* <Card
-				source={require("../../assets/images/prophecies/relationship.jpg")}
-				style={styles.card}
-			/> */}
+			<View style={styles.row}>
+				<Card
+					source={require("../../assets/images/prophecies/daily.jpg")}
+					style={styles.card}
+				/>
+				<Card
+					source={require("../../assets/images/prophecies/love.jpg")}
+					style={styles.card}
+				/>
+				<Card
+					source={require("../../assets/images/prophecies/work.jpg")}
+					style={styles.card}
+				/>
+			</View>
+			<View style={styles.row}>
+				<Card
+					source={require("../../assets/images/prophecies/obstacle.jpg")}
+					style={styles.card}
+				/>
+				<Card
+					source={require("../../assets/images/prophecies/relationship.jpg")}
+					style={styles.card}
+				/>
+			</View>
 		</View>
 	);
 };
@@ -33,16 +37,23 @@ const styles = StyleSheet.create({
 	container: {
 		width: "100%",
 		height: "40%", // 40% of screen - ads banner size
+		flexDirection: "column",
+		justifyContent: "flex-start",
+		alignContent: "space-around",
+		padding: 12,
+	},
+	row: {
 		flexDirection: "row",
-		flexWrap: "wrap",
+		flex: 1,
+		width: "100%",
 		justifyContent: "center",
-		alignContent: "center",
-		paddingHorizontal: 4,
+		alignItems: "center",
+		paddingVertical: 4,
 	},
 	card: {
 		width: undefined,
-		height: "50%", // 50% of card container
-		margin: 6,
+		height: "100%",
+		margin: 4,
 	},
 });
 
