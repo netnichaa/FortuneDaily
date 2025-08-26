@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, PressableProps, StyleSheet, View } from "react-native";
+import { Pressable, PressableProps, StyleSheet } from "react-native";
 import colors from "../constants/colors";
 import Text from "./Text";
 
@@ -11,19 +11,19 @@ const Button: React.FC<ButtonProps> = (props) => {
 	const { style, children, ...rest } = props;
 
 	return (
-		<View style={styles.container}>
-			<Pressable
-				style={({ pressed }) => ({
+		<Pressable
+			style={({ pressed }) => [
+				{
 					...styles.button,
 					backgroundColor: pressed ? colors.lightGrey : colors.white,
-					style,
 					flexDirection: "row",
-				})}
-				{...rest}
-			>
-				<Text variant="header">{children}</Text>
-			</Pressable>
-		</View>
+					style,
+				},
+			]}
+			{...rest}
+		>
+			<Text variant="body">{children}</Text>
+		</Pressable>
 	);
 };
 
@@ -33,11 +33,11 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 	},
 	button: {
-		height: 36,
+		height: 32,
 		justifyContent: "center",
 		alignItems: "center",
-		paddingHorizontal: 16,
-		width: "auto",
+		paddingHorizontal: 12,
+		flexGrow: 1,
 	},
 });
 

@@ -1,35 +1,44 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import Card from "../ui/Card";
+import { Pressable, PressableProps, StyleSheet, View } from "react-native";
+import Card from "../../ui/Card";
 
-const CardList = () => {
+interface CardListProps extends PressableProps {}
+
+const CardList: React.FC<CardListProps> = (props) => {
+	const { onPress, ...rest } = props;
+
 	return (
-		<View style={styles.container}>
+		<Pressable style={styles.container} {...rest}>
 			<View style={styles.row}>
 				<Card
-					source={require("../../assets/images/prophecies/daily.jpg")}
+					source={require("@/assets/images/prophecies/daily.png")}
 					style={styles.card}
+					onPress={onPress}
 				/>
 				<Card
-					source={require("../../assets/images/prophecies/love.jpg")}
+					source={require("@/assets/images/prophecies/love.png")}
 					style={styles.card}
+					onPress={onPress}
 				/>
 				<Card
-					source={require("../../assets/images/prophecies/work.jpg")}
+					source={require("@/assets/images/prophecies/work.png")}
 					style={styles.card}
+					onPress={onPress}
 				/>
 			</View>
 			<View style={styles.row}>
 				<Card
-					source={require("../../assets/images/prophecies/obstacle.jpg")}
+					source={require("@/assets/images/prophecies/obstacle.png")}
 					style={styles.card}
+					onPress={onPress}
 				/>
 				<Card
-					source={require("../../assets/images/prophecies/relationship.jpg")}
+					source={require("@/assets/images/prophecies/relationship.png")}
 					style={styles.card}
+					onPress={onPress}
 				/>
 			</View>
-		</View>
+		</Pressable>
 	);
 };
 

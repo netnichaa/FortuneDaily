@@ -20,9 +20,9 @@ const Text: React.FC<TextProps> = (props) => {
 
 const styles = StyleSheet.create({
 	title: {
-		fontSize: 20,
+		fontSize: 24,
 		fontWeight: "bold",
-		color: colors.black,
+		color: colors.white,
 	},
 	header: {
 		fontSize: 18,

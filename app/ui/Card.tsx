@@ -1,9 +1,23 @@
 import React from "react";
-import { Image, ImageProps, StyleSheet } from "react-native";
+import {
+	Image,
+	ImageProps,
+	Pressable,
+	PressableProps,
+	StyleSheet,
+} from "react-native";
 
-const Card: React.FC<ImageProps> = (props) => {
-	const { style, ...rest } = props;
-	return <Image style={[styles.card, style]} {...rest} />;
+export interface CardProps extends ImageProps {
+	onPress?: PressableProps["onPress"];
+}
+
+const Card: React.FC<CardProps> = (props) => {
+	const { style, onPress, ...rest } = props;
+	return (
+		<Pressable onPress={onPress}>
+			<Image style={[styles.card, style]} {...rest} />
+		</Pressable>
+	);
 };
 
 const styles = StyleSheet.create({
