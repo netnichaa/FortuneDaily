@@ -1,12 +1,16 @@
-import { VideoView, useVideoPlayer } from "expo-video";
-import React from "react";
+import { useVideoPlayer, VideoView } from "expo-video";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import AdsBanner from "../ui/AdsBanner";
-import CardList from "./CardList";
+import CoinBox from "../ui/CoinBox";
+import CardList from "./components/CardList";
+import CardModal from "./components/CardModal";
 
-const HomeScreen = () => {
+const HomeScreen: React.FC = () => {
+	const [modalVisibility, setModalVisibility] = useState<boolean>(false);
+
 	const player = useVideoPlayer(
-		require("../../assets/videos/background.mov"),
+		require("@/assets/videos/background.mov"),
 		(player) => {
 			player.loop = true; // Loop the video
 			player.play(); // Auto-play since start
@@ -21,8 +25,16 @@ const HomeScreen = () => {
 				player={player}
 				nativeControls={false}
 			/>
+			<CoinBox number={10} />
 			{/* Content on top of the video background */}
-			<CardList />
+			<CardModal
+				visible={modalVisibility}
+				onRequestClose={() => {
+					setModalVisibility(false);
+				}}
+				onNext={() => {}}
+			/>
+			<CardList onPress={() => setModalVisibility(true)} />
 			<AdsBanner />
 		</View>
 	);
@@ -43,6 +55,7 @@ const styles = StyleSheet.create({
 		aspectRatio: 540 / 1280, // actual video ratio
 		top: 0,
 		left: 0,
+		zIndex: 0,
 	},
 });
 
