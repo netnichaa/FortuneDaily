@@ -1,6 +1,12 @@
 import { ColorValue } from "react-native";
 
-type ColorScheme = "black" | "white" | "grey" | "lightGrey" | "darkGrey";
+type ColorScheme =
+	| "black"
+	| "white"
+	| "grey"
+	| "lightGrey"
+	| "darkGrey"
+	| "brand";
 
 export type Colors = Record<ColorScheme, ColorValue>;
 
@@ -10,6 +16,7 @@ const colors: Colors = {
 	grey: "#747474ff",
 	lightGrey: "#dfdfdfff",
 	darkGrey: "#363636ff",
+	brand: "#9E8372ff",
 };
 
 export default colors;
