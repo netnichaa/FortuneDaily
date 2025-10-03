@@ -28,11 +28,14 @@ const HomeScreen: React.FC = () => {
 			<CoinBox number={10} />
 			{/* Content on top of the video background */}
 			<CardModal
+				isRead={true}
 				visible={modalVisibility}
 				onRequestClose={() => {
 					setModalVisibility(false);
 				}}
-				onNext={() => {}}
+				onRead={() => {
+					setModalVisibility(false);
+				}}
 			/>
 			<CardList onPress={() => setModalVisibility(true)} />
 			<AdsBanner />
@@ -42,7 +45,6 @@ const HomeScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
 	container: {
-		// ...StyleSheet.absoluteFillObject,
 		overflow: "hidden",
 		width: "100%",
 		height: "100%",

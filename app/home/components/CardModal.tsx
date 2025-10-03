@@ -1,7 +1,9 @@
+import colors from "@/app/constants/colors";
 import Button from "@/app/ui/Button";
 import Card from "@/app/ui/Card";
 import Overlay from "@/app/ui/Overlay";
 import ProphecyTitle from "@/app/ui/ProphecyTitle";
+import Text from "@/app/ui/Text";
 import {
 	GestureResponderEvent,
 	Image,
@@ -12,29 +14,25 @@ import {
 } from "react-native";
 
 interface CardModalProps extends ModalProps {
-	onNext: (event: GestureResponderEvent) => void;
+	onRead: (event: GestureResponderEvent) => void;
+	isRead?: boolean;
 }
 
 const CardModal: React.FC<CardModalProps> = (props) => {
-	const { onNext, onRequestClose, ...rest } = props;
+	const { onRead, isRead, onRequestClose, ...rest } = props;
 
-	return (
-		<Modal
-			animationType="fade"
-			transparent={true}
-			onRequestClose={onRequestClose}
-			{...rest}
-		>
+	const ProphecyModal = () => {
+		return (
 			<Overlay onPress={onRequestClose}>
 				<View style={styles.container}>
 					<ProphecyTitle>ดวงรายวัน</ProphecyTitle>
 					<Card
-						source={require("@/assets/images/prophecies/daily.png")}
+						source={require("@/assets/images/arcana/00_TheFool.png")}
 						style={styles.card}
 					/>
 					<View style={styles.buttonContainer}>
 						<Button onPress={onRequestClose}>ยกเลิก</Button>
-						<Button onPress={onNext}>
+						<Button onPress={onRead}>
 							ใช้{" "}
 							<Image
 								source={require("@/assets/images/coin.png")}
@@ -45,6 +43,41 @@ const CardModal: React.FC<CardModalProps> = (props) => {
 					</View>
 				</View>
 			</Overlay>
+		);
+	};
+
+	const ReadModal = () => {
+		return (
+			<Overlay onPress={onRequestClose}>
+				<View style={styles.container}>
+					<ProphecyTitle>ดวงรายวัน</ProphecyTitle>
+					<Card
+						source={require("@/assets/images/arcana/00_TheFool.png")}
+						style={styles.readCard}
+					/>
+					<View style={styles.readCardContainer}>
+						<Text variant="header">{"randomCard?.arcanaName"}</Text>
+						<Text>
+							{"   "}
+							{"randomCard?.daily.prophecy.TH"}
+						</Text>
+					</View>
+					<View style={styles.buttonContainer}>
+						<Button onPress={onRequestClose}>กลับ</Button>
+					</View>
+				</View>
+			</Overlay>
+		);
+	};
+
+	return (
+		<Modal
+			animationType="fade"
+			transparent={true}
+			onRequestClose={onRequestClose}
+			{...rest}
+		>
+			{isRead ? <ReadModal /> : <ProphecyModal />}
 		</Modal>
 	);
 };
@@ -56,6 +89,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 		gap: 16,
+		paddingVertical: 48,
 	},
 	card: {
 		width: "60%",
@@ -72,6 +106,20 @@ const styles = StyleSheet.create({
 	coin: {
 		width: 12,
 		height: 12,
+	},
+	// styles for read modal component
+	readCard: {
+		width: "30%",
+		height: undefined,
+		aspectRatio: 9 / 16,
+	},
+	readCardContainer: {
+		width: "60%",
+		flex: 1,
+		backgroundColor: colors.lightBrand,
+		padding: 12,
+		flexShrink: 1,
+		borderRadius: 4,
 	},
 });
 
