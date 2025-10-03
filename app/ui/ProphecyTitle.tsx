@@ -27,6 +27,8 @@ const styles = StyleSheet.create({
 	},
 	textBox: {
 		position: "absolute",
+		resizeMode: "contain",
+		height: 42,
 	},
 });
 

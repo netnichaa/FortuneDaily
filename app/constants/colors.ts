@@ -6,7 +6,8 @@ type ColorScheme =
 	| "grey"
 	| "lightGrey"
 	| "darkGrey"
-	| "brand";
+	| "brand"
+	| "lightBrand";
 
 export type Colors = Record<ColorScheme, ColorValue>;
 
@@ -17,6 +18,7 @@ const colors: Colors = {
 	lightGrey: "#dfdfdfff",
 	darkGrey: "#363636ff",
 	brand: "#9E8372ff",
+	lightBrand: "#d2bcafff",
 };
 
 export default colors;
