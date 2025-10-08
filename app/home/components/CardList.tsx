@@ -4,7 +4,7 @@ import { Pressable, PressableProps, StyleSheet, View } from "react-native";
 import Card from "../../ui/Card";
 
 interface CardListProps extends Omit<PressableProps, "onPress"> {
-	onPress: (cardType: ProphecyType) => void;
+	onPress: (prophecyType: ProphecyType) => void;
 }
 
 const CardList: React.FC<CardListProps> = (props) => {

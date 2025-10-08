@@ -1,4 +1,5 @@
 import colors from "@/app/constants/colors";
+import { ProphecyType } from "@/app/types/ArcanaDataList";
 import Button from "@/app/ui/Button";
 import Card from "@/app/ui/Card";
 import Overlay from "@/app/ui/Overlay";
@@ -15,17 +16,26 @@ import {
 
 interface CardModalProps extends ModalProps {
 	onRead: (event: GestureResponderEvent) => void;
+	prophecyType: ProphecyType;
 	isRead?: boolean;
 }
 
 const CardModal: React.FC<CardModalProps> = (props) => {
-	const { onRead, isRead, onRequestClose, ...rest } = props;
+	const { onRead, isRead, prophecyType, onRequestClose, ...rest } = props;
+
+	const prophecyTypeToString: Record<ProphecyType, string> = {
+		daily: "ดวงรายวัน",
+		love: "ดวงความรัก",
+		work: "ดวงการงาน",
+		obstacle: "ดวงอุปสรรค",
+		relationship: "ดวงความสัมพันธ์",
+	};
 
 	const ProphecyModal = () => {
 		return (
 			<Overlay onPress={onRequestClose}>
 				<View style={styles.container}>
-					<ProphecyTitle>ดวงรายวัน</ProphecyTitle>
+					<ProphecyTitle>{prophecyTypeToString[prophecyType]}</ProphecyTitle>
 					<Card
 						source={require("@/assets/images/arcana/00_TheFool.png")}
 						style={styles.card}
@@ -50,7 +60,7 @@ const CardModal: React.FC<CardModalProps> = (props) => {
 		return (
 			<Overlay onPress={onRequestClose}>
 				<View style={styles.container}>
-					<ProphecyTitle>ดวงรายวัน</ProphecyTitle>
+					<ProphecyTitle>{prophecyTypeToString[prophecyType]}</ProphecyTitle>
 					<Card
 						source={require("@/assets/images/arcana/00_TheFool.png")}
 						style={styles.readCard}

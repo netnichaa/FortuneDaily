@@ -1,6 +1,7 @@
 import { useVideoPlayer, VideoView } from "expo-video";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
+import { ProphecyType } from "../types/ArcanaDataList";
 import AdsBanner from "../ui/AdsBanner";
 import CoinBox from "../ui/CoinBox";
 import CardList from "./components/CardList";
@@ -8,6 +9,7 @@ import CardModal from "./components/CardModal";
 
 const HomeScreen: React.FC = () => {
 	const [modalVisibility, setModalVisibility] = useState<boolean>(false);
+	const [prophecyType, setProphecyType] = useState<ProphecyType>("daily");
 
 	const player = useVideoPlayer(
 		require("@/assets/videos/background.mov"),
@@ -29,6 +31,7 @@ const HomeScreen: React.FC = () => {
 			{/* Content on top of the video background */}
 			<CardModal
 				isRead={true}
+				prophecyType={prophecyType}
 				visible={modalVisibility}
 				onRequestClose={() => {
 					setModalVisibility(false);
@@ -38,9 +41,9 @@ const HomeScreen: React.FC = () => {
 				}}
 			/>
 			<CardList
-				onPress={(cardType) => {
+				onPress={(prophecyType) => {
 					setModalVisibility(true);
-					console.log(cardType);
+					setProphecyType(prophecyType);
 				}}
 			/>
 			<AdsBanner />
