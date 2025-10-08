@@ -1,8 +1,11 @@
+import { ProphecyType } from "@/app/types/ArcanaDataList";
 import React from "react";
 import { Pressable, PressableProps, StyleSheet, View } from "react-native";
 import Card from "../../ui/Card";
 
-interface CardListProps extends PressableProps {}
+interface CardListProps extends Omit<PressableProps, "onPress"> {
+	onPress: (cardType: ProphecyType) => void;
+}
 
 const CardList: React.FC<CardListProps> = (props) => {
 	const { onPress, ...rest } = props;
@@ -13,29 +16,29 @@ const CardList: React.FC<CardListProps> = (props) => {
 				<Card
 					source={require("@/assets/images/prophecies/daily.png")}
 					style={styles.card}
-					onPress={onPress}
+					onPress={() => onPress("daily")}
 				/>
 				<Card
 					source={require("@/assets/images/prophecies/love.png")}
 					style={styles.card}
-					onPress={onPress}
+					onPress={() => onPress("love")}
 				/>
 				<Card
 					source={require("@/assets/images/prophecies/work.png")}
 					style={styles.card}
-					onPress={onPress}
+					onPress={() => onPress("work")}
 				/>
 			</View>
 			<View style={styles.row}>
 				<Card
 					source={require("@/assets/images/prophecies/obstacle.png")}
 					style={styles.card}
-					onPress={onPress}
+					onPress={() => onPress("obstacle")}
 				/>
 				<Card
 					source={require("@/assets/images/prophecies/relationship.png")}
 					style={styles.card}
-					onPress={onPress}
+					onPress={() => onPress("relationship")}
 				/>
 			</View>
 		</Pressable>

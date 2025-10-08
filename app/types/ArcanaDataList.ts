@@ -2,7 +2,12 @@ export type SupportedLanguages = "TH" | "EN" | "JP";
 
 export type Localization = Record<SupportedLanguages, string>;
 
-export type ProphecyType = "daily" | "love" | "work" | "health";
+export type ProphecyType =
+	| "daily"
+	| "love"
+	| "work"
+	| "obstacle"
+	| "relationship";
 
 export type ProphecyDetails = {
 	value: number;

@@ -37,7 +37,12 @@ const HomeScreen: React.FC = () => {
 					setModalVisibility(false);
 				}}
 			/>
-			<CardList onPress={() => setModalVisibility(true)} />
+			<CardList
+				onPress={(cardType) => {
+					setModalVisibility(true);
+					console.log(cardType);
+				}}
+			/>
 			<AdsBanner />
 		</View>
 	);
